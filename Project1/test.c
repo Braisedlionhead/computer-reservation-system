@@ -8,14 +8,10 @@
 void main()
 {
 	Machine machines[NUMBER];
-	Init(machines);
+	Read(machines);
 	Start();
-
-
-
 	int choice,x = 1,t = 0;
 	printf("按数字键选择要执行的操作：");
-
 	Menu();
 	while (x)
 	{
@@ -55,21 +51,19 @@ void main()
 			t = 1;
 		}
 	}
-
-	//printf("结束标记（手动标记）");			//待完善！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+	Save(machines);
 }
 
 
 
-//初始化机器操作
-void Init(Machine machines[])
-{
-	for (int j=1; j<=NUMBER; j++)
-	{
-		for (int i = 1; i <= TIME; i++)
-			machines[j - 1].time[i-1] = 0;
-	}
-}
+
+
+
+
+
+
+
+
 
 
 

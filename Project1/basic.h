@@ -8,23 +8,17 @@
 #define TEST
 #define NUMBER 20
 #define TIME 6
-#define None 0		//无
-#define Exist 1		//有
+#define None 0
+#define Exist 1
 
 typedef struct
 {
-//	int id;//机位号			好像机位号也不需要，下标就是机器号
 	int time[6];//预定时间段（0=未预定	1-已预定）
 }Machine;
 
-//声明函数
-void Init(Machine machines[]);
 
 
 #endif
-
-
-
 
 
 

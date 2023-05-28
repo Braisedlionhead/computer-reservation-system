@@ -3,8 +3,7 @@
 #include "basic.h"
 
 
-
-
+//是否继续
 int if_continue()
 {
 	printf("是否要继续？	（1-继续	0-返回）\n");

@@ -4,32 +4,6 @@
 
 
 
-/*///////////////////////////////////////////////
-
-
-*************************************************
-*				机房机位预定系统				*
-*												*
-*					主菜单						*
-*												*
-*				1.查询							*
-*				2.预定							*
-*				3.取消预定						*
-*				0.退出							*
-*												*
-*												*
-*												*
-*												*
-*												*
-*************************************************
-
-
-				15行
-/////////////////////////////////////////////////
-*/
-
-
-
 //初始信息
 void Start()
 {
@@ -72,38 +46,48 @@ void Menu()
 
 
 
+//	读取上次运行程序结束前机器状态
+void Read(Machine machines[])
+{
+	FILE* fp;
 
+	fp = fopen("status.dat", "rb");
 
+	if(fp)//如果文件打开失败（正常是由于不存在）
+	{
+		fread(machines, sizeof(Machine), NUMBER, fp);
+		fclose(fp);
+	}
 
-
-
-
-
-
-
-/*
-
-
-
-
-//显示预定信息
-void show_info(int time, int seat) {
-	printf("*************************************************\n");
-	printf("*		机房机位预定系统		*\n");
-	printf("*						*\n");
-	printf("*		    预定信息			*\n");
-	printf("*						*\n");
-	printf("*		时间段：%d			*\n", time);
-	printf("*		机器号：%d			*\n", seat);
-	printf("*						*\n");
-	printf("*************************************************\n");
-	printf("请按任意键返回主菜单\n");
-	getchar(); //等待用户输入
-	Menu(); //返回主菜单
+	else
+	{
+		for (int j = 1; j <= NUMBER; j++)
+		{
+			for (int i = 1; i <= TIME; i++)
+				machines[j - 1].time[i - 1] = 0;
+		}
+	}
 }
 
 
-*/
+
+// 保存系统结束前机器状态
+void Save(Machine machines[])
+{
+	FILE* fp;
+
+	fp = fopen("status.dat", "wb");
+	if (fp)
+	{
+		fwrite(machines, sizeof(Machine), NUMBER, fp);
+		fclose(fp);
+	}
+}
+
+
+
+
+
 
 
 
